@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}الشركة{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>بيانات الشركة</h2>
+    {% if not edit_mode %}
+    <a href="{{ url_for('edit_company') }}" class="btn btn-primary">تعديل</a>
+    {% endif %}
+</div>
+
+{% if edit_mode %}
+<div class="form-container">
+    <h2>تعديل بيانات الشركة</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="user_name">اسم المستخدم:</label>
+            <input type="text" id="user_name" name="user_name" value="{{ company.user_name or '' }}">
+        </div>
+        <div class="form-group">
+            <label for="link_image_brand">رابط صورة البراند:</label>
+            <input type="url" id="link_image_brand" name="link_image_brand" value="{{ company.link_image_brand or '' }}">
+        </div>
+        <div class="form-group">
+            <label for="link_facebook">رابط فيسبوك:</label>
+            <input type="url" id="link_facebook" name="link_facebook" value="{{ company.link_facebook or '' }}">
+        </div>
+        <div class="form-group">
+            <label for="num_phone">رقم الهاتف:</label>
+            <input type="text" id="num_phone" name="num_phone" value="{{ company.num_phone or '' }}">
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">حفظ</button>
+            <a href="{{ url_for('company') }}" class="btn btn-secondary">إلغاء</a>
+        </div>
+    </form>
+</div>
+{% else %}
+<div class="company-info">
+    <div class="info-group">
+        <label>اسم المستخدم:</label>
+        <span>{{ company.user_name or 'غير محدد' }}</span>
+    </div>
+    <div class="info-group">
+        <label>رابط صورة البراند:</label>
+        <span>{{ company.link_image_brand or 'غير محدد' }}</span>
+        {% if company.link_image_brand %}
+        <img src="{{ company.link_image_brand }}" alt="Brand Image" class="brand-preview">
+        {% endif %}
+    </div>
+    <div class="info-group">
+        <label>رابط فيسبوك:</label>
+        <span>{{ company.link_facebook or 'غير محدد' }}</span>
+        {% if company.link_facebook %}
+        <a href="{{ company.link_facebook }}" target="_blank" class="external-link">فتح الرابط</a>
+        {% endif %}
+    </div>
+    <div class="info-group">
+        <label>رقم الهاتف:</label>
+        <span>{{ company.num_phone or 'غير محدد' }}</span>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

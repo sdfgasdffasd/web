@@ -1,0 +1,16 @@
+=== Company ===
+Count: 1
+[(1, 'ابن الرعد', 'https://i.ibb.co/bRvN8Qnj/image.png', 'https://www.facebook.com/share/1BrLX262Er/', '01030901301')]
+
+=== Category ===
+Count: 1
+[(1, 'مشروبات')]
+
+=== Product ===
+Count: 1
+[(1, 'cofee', 30.0, 'https://i.ibb.co/DnLRKJ2/cofee.png', 'قهوتنا غير', 'مشروبات')]
+
+=== Manager (should not be used) ===
+Count: 2
+ID: 1, Username: covariance (password hidden)
+ID: 2, Username: cofee_place_damn (password hidden)

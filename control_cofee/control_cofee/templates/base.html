@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}إدارة المنتجات{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">إدارة المنتجات</h1>
+            <ul class="nav-menu">
+                {% if session.get('logged_in') %}
+                <li><a href="{{ url_for('products') }}" class="nav-link">المنتجات</a></li>
+                <li><a href="{{ url_for('company') }}" class="nav-link">الشركة</a></li>
+                <li><a href="{{ url_for('categories') }}" class="nav-link">الأنواع</a></li>
+                <li><a href="{{ url_for('logout') }}" class="nav-link logout">تسجيل خروج</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

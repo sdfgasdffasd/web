@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}الأنواع{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>الأنواع</h2>
+</div>
+
+{% if edit_mode %}
+<div class="form-container">
+    <h2>تعديل النوع</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="name">اسم النوع:</label>
+            <input type="text" id="name" name="name" required value="{{ category.name }}">
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">حفظ</button>
+            <a href="{{ url_for('categories') }}" class="btn btn-secondary">إلغاء</a>
+        </div>
+    </form>
+</div>
+{% else %}
+<div class="add-category-form">
+    <form method="POST" action="{{ url_for('add_category') }}" class="inline-form">
+        <input type="text" name="name" placeholder="اسم النوع الجديد" required>
+        <button type="submit" class="btn btn-success">إضافة</button>
+    </form>
+</div>
+
+<div class="categories-list">
+    {% for category in categories %}
+    <div class="category-item">
+        <div class="category-info">
+            <h3>{{ category.name }}</h3>
+            <p class="product-count">عدد المنتجات: {{ category.product_count or 0 }}</p>
+        </div>
+        <div class="category-actions">
+            <a href="{{ url_for('edit_category', id=category.id) }}" class="btn btn-primary">تعديل</a>
+            <form method="POST" action="{{ url_for('delete_category', id=category.id) }}" class="delete-form" onsubmit="return confirm('هل أنت متأكد من حذف هذا النوع؟');">
+                <button type="submit" class="btn btn-danger" {% if category.product_count > 0 %}disabled title="لا يمكن حذف نوع له منتجات"{% endif %}>حذف</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="no-categories">
+        <p>لا توجد أنواع حالياً</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

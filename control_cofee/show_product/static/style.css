@@ -1,0 +1,355 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Top Contact Bar */
+.top-bar {
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.contact-links {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-link {
+    color: #f5a623;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-link:hover {
+    transform: scale(1.1);
+    color: #ffb400;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/static/ابن_الرعد.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.brand-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #f5a623;
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.5);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.brand-name {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #f5a623;
+    text-shadow: 0 0 30px rgba(245, 166, 35, 0.7);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Category Section */
+.category-section {
+    margin-bottom: 60px;
+}
+
+.category-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f5a623;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(245, 166, 35, 0.5);
+}
+
+.gold-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #f5a623, transparent);
+    margin: 0 auto 40px;
+    box-shadow: 0 0 10px rgba(245, 166, 35, 0.7);
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #333;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(245, 166, 35, 0.2);
+    border-color: #f5a623;
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.wishlist-icon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.wishlist-icon:hover {
+    background-color: rgba(245, 166, 35, 0.3);
+    transform: scale(1.1);
+}
+
+.wishlist-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #f5a623;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 0.95rem;
+    color: #cccccc;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff4444;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-contact {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f5a623;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #ffb400;
+}
+
+.footer-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-phone {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.copyright {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .brand-name {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+    }
+    
+    .category-title {
+        font-size: 2rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .footer-contact {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .brand-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .brand-name {
+        font-size: 1.8rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-image {
+        height: 200px;
+    }
+}
+
+/* Glow Effects */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(245, 166, 35, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(245, 166, 35, 0.8);
+    }
+}
+
+.brand-logo {
+    animation: glow 3s ease-in-out infinite;
+}
+
+.category-title {
+    animation: glow 4s ease-in-out infinite;
+}

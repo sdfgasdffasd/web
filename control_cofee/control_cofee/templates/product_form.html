@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if action == 'add' %}إضافة منتج{% else %}تعديل منتج{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>
+        {% if action == 'add' %}إضافة منتج جديد{% else %}تعديل المنتج{% endif %}
+    </h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="name_product">اسم المنتج:</label>
+            <input type="text" id="name_product" name="name_product" required
+                   {% if product %}value="{{ product.name_product }}"{% endif %}>
+        </div>
+        <div class="form-group">
+            <label for="price">السعر:</label>
+            <input type="number" id="price" name="price" step="0.01" required
+                   {% if product %}value="{{ product.price }}"{% endif %}>
+        </div>
+        <div class="form-group">
+            <label for="link_image">رابط الصورة:</label>
+            <input type="url" id="link_image" name="link_image"
+                   {% if product %}value="{{ product.link_image }}"{% endif %}>
+        </div>
+        <div class="form-group">
+            <label for="category">النوع:</label>
+            <select id="category" name="category" required>
+                <option value="">اختر النوع</option>
+                {% for cat in categories %}
+                <option value="{{ cat.name }}" 
+                        {% if product and product.category == cat.name %}selected{% endif %}>
+                    {{ cat.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">الوصف:</label>
+            <textarea id="description" name="description" rows="4">{% if product %}{{ product.description }}{% endif %}</textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">حفظ</button>
+            <a href="{{ url_for('products') }}" class="btn btn-secondary">إلغاء</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
